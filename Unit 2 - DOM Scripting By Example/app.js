@@ -89,20 +89,19 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for HTML to load
         }
       }
       
-      input.value = '';
-      
-      const li = createLI(text);
-      
+      input.value = '';      
+      const li = createLI(text);      
       ul.appendChild(li);
     } else { // Input is blank
-      alert('Please enter a name');
+      alert('Please enter a name.');
     }
   });
 
   ul.addEventListener('change', (e) => {
     const checkbox = e.target;
     // My added code
-    const label = e.target.parentNode;
+    let label = e.target.parentNode;
+    let labelText = label.textContent;
     //console.log(label.textContent);
 
     const checked = checkbox.checked; // Boolean
@@ -142,10 +141,14 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for HTML to load
         save: () => {
           const input = li.firstElementChild;
           const span = document.createElement('span');
-          span.textContent = input.value;
-          li.insertBefore(span, input);
-          li.removeChild(input);
-          button.textContent = 'Edit';
+          if (input.value) {
+            span.textContent = input.value;
+            li.insertBefore(span, input);
+            li.removeChild(input);
+            button.textContent = 'Edit';
+          } else {
+            alert('Please enter a name.');
+          }
         }
       }
 
