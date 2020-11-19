@@ -100,8 +100,7 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for HTML to load
   ul.addEventListener('change', (e) => {
     const checkbox = e.target;
     // My added code
-    let label = e.target.parentNode;
-    let labelText = label.textContent;
+    const label = e.target.parentNode;
     //console.log(label.textContent);
 
     const checked = checkbox.checked; // Boolean
