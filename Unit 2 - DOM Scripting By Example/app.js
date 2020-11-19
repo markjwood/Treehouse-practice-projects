@@ -101,22 +101,22 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for HTML to load
     const checkbox = e.target;
     // My added code
     const label = e.target.parentNode;
-    //console.log(label.textContent);
 
     const checked = checkbox.checked; // Boolean
     const listItem = checkbox.parentNode.parentNode;
     if (checked) {
       listItem.className = 'responded';
 
-      // My added code - not working
-      // Text is being replaced, but checkbox gets deleted.
-      //label.textContent = label.textContent.replace('Confirm','Confirmed');
+      // My added code
+      const newLabel = document.createTextNode('Confirmed');
+      label.replaceChild(newLabel, label.childNodes[0]);
 
     } else {
       listItem.className = '';
       
-      // My added code - not working
-      //label.textContent = label.textContent.replace('Confirmed', 'Confirm');
+      // My added code
+      const newLabel = document.createTextNode('Confirm');
+      label.replaceChild(newLabel, label.childNodes[0]);
     }
   });
 
